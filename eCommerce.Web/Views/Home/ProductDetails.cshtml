@@ -1,0 +1,38 @@
+﻿@model eCommerce.Model.Product
+
+@{
+    ViewBag.Title = "ProductDetails";
+}
+<div class="container">
+    <div class="row">
+        <table class="table table-condensed">
+            <tbody>
+                <tr>
+                    <td>
+                        <img class="img-thumbnail" style="width: 25%;" src="~/Content/Images/@Model.ImageUrl" alt="@Model.Description" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Description)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @string.Format("{0:C}", Model.Price)
+                    </td>
+                </tr>
+            <tr>
+                <td>
+                    @string.Format("Available Quantity {0}", Model.Quantity)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("Add To Basket", "AddToBasket", new { id = Model.ProductId, @class= "btn btn-default" })
+                </td>
+            </tr>
+            </tbody>
+        </table>        
+    </div>
+</div>

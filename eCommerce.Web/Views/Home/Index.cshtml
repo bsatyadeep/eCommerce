@@ -1,0 +1,29 @@
+﻿@model IEnumerable<eCommerce.Model.Product>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <div class="row">
+        <h4>Product List</h4>
+        <br/>
+        <table class="table table-bordered table-condensed table-responsive table-striped">           
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img class="img-thumbnail" style="width: 30px; height: 30px;" src="~/Content/Images/@item.ImageUrl" alt="@item.Description" />
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.Description, "ProductDetails", new {id = item.ProductId})
+                    </td>
+
+                    <td>
+                        @string.Format("{0:c}", item.Price)
+                    </td>                   
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
